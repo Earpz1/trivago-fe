@@ -31,7 +31,7 @@ const NavBar = () => {
             <a href="/">
               <BiBed className="logo" />
             </a>
-            <span className="logo-text">Book-A-Bed</span>
+            <span className="logo-text">Strivago</span>
             <span className="logo-text"></span>
           </Navbar.Brand>
 

@@ -24,7 +24,6 @@ const Login = () => {
     event.preventDefault()
 
     const login = await userLogin(email, password)
-    console.log(login.promiseResult)
   }
   return (
     <>
@@ -32,7 +31,7 @@ const Login = () => {
         <Container>
           <Navbar.Brand className="d-flex align-items-center">
             <BiBed className="logo" />
-            <span className="logo-text">Book-A-Bed</span>
+            <span className="logo-text">Strivago</span>
           </Navbar.Brand>
         </Container>
       </Navbar>

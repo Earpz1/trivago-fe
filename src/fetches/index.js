@@ -1,5 +1,3 @@
-import { Navigate, useNavigate } from 'react-router-dom'
-
 export const getUserDetails = async () => {
   const options = {
     method: 'GET',
