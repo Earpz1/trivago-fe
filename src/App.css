@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+
+html {
+  background-color: rgba(222, 216, 223, 0.618);
+}
+
+#root {
+  background-color: rgba(222, 216, 223, 0.618);
+}
+
+.logo {
+  height: 50px;
+  width: 100px;
+  color: rgb(150, 10, 150);
+}
+
+.logo-text {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.8rem;
+}
+
+.content-container {
+  background-color: white;
+  margin-top: 50px;
+  width: 80%;
+  height: auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 80px;
+  padding-right: 80px;
+  border-radius: 10px;
+}
+
+.login {
+  height: 90vh;
+}
+
+.login-container {
+  height: 300px;
+  width: 700px;
+  border: 3px solid rgb(0, 0, 0);
+  border-radius: 10px;
+}
