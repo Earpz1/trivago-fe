@@ -2,18 +2,16 @@ import { getAccommodationDetails } from '../fetches'
 import React from 'react'
 import NavBar from './NavBar'
 import { useQuery } from 'react-query'
-import { useParams, useSearchParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const PropertyDetails = () => {
+  let params = useParams()
+
   const { data, isLoading } = useQuery(
-    ['accommodationDetails', '63e64a582ef5dfeacb0a2f0f'],
+    ['accommodationDetails', params.id],
     ({ queryKey }) => getAccommodationDetails(queryKey[1]),
     { refetchOnWindowFocus: false },
   )
-
-  if (!isLoading) {
-    console.log(data.name)
-  }
 
   return (
     <>
