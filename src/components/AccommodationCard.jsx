@@ -1,9 +1,10 @@
 import { Card, ListGroup, Button } from 'react-bootstrap'
 import { Rating } from 'react-simple-star-rating'
+import { Link } from 'react-router-dom'
 
 const AccommodationCard = ({ details }) => {
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card className="mb-5">
       <Card.Img variant="top" src={details.image} />
       <Card.Body>
         <Card.Title>{details.name}</Card.Title>
@@ -18,7 +19,9 @@ const AccommodationCard = ({ details }) => {
         </ListGroup.Item>
       </ListGroup>
       <Card.Body>
-        <Button>Book</Button>
+        <Link to={`accommodation/${details._id}`}>
+          <Button>More Details...</Button>
+        </Link>
       </Card.Body>
     </Card>
   )

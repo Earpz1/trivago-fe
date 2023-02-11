@@ -11,8 +11,7 @@ export const getUserDetails = async () => {
   try {
     let response = await fetch(fetchURL, options)
     if (response.ok) {
-      const data = await response.json()
-      return data
+      return response
     }
   } catch (error) {}
 }
@@ -80,6 +79,27 @@ export const userLogin = async (email, password) => {
       localStorage.setItem('accessToken', data.accessToken)
       console.log(localStorage.getItem('accessToken'))
       window.location = '/'
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getAccommodationDetails = async (id) => {
+  const options = {
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
+    },
+  }
+  const fetchURL = `https://taboo-quiet-production.up.railway.app/accommodation/${id}`
+
+  try {
+    let response = await fetch(fetchURL, options)
+
+    if (response.ok) {
+      let data = await response.json()
+      return data
     }
   } catch (error) {
     console.log(error)

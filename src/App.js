@@ -5,6 +5,7 @@ import Login from './components/Login'
 import MyAccommodation from './components/MyAccommodation'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import PropertyDetails from './components/PropertyDetails'
 
 function App() {
   const client = new QueryClient()
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/accommodation/:id" element={<PropertyDetails />} />
             <Route path="/myAccommodation" element={<MyAccommodation />} />
           </Routes>
         </Router>

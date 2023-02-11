@@ -9,7 +9,9 @@ import { useQuery } from 'react-query'
 const NavBar = () => {
   const navigate = useNavigate()
   const [pageLoaded, setPageLoaded] = useState(false)
-  const { data, isLoading } = useQuery(['userDetails'], getUserDetails)
+  const { data, isLoading } = useQuery(['userDetails'], getUserDetails, {
+    refetchOnWindowFocus: false,
+  })
 
   useEffect(() => {
     if (!localStorage.getItem('accessToken')) navigate('/login')

@@ -14,7 +14,7 @@ const Search = () => {
           <Row>
             {!isLoading &&
               data.map((accomodation) => (
-                <Col key={accomodation._id} md={3} className="mb-3">
+                <Col key={accomodation._id} xl={4} lg={6} sm={12}>
                   <AccommodationCard details={accomodation} />
                 </Col>
               ))}
