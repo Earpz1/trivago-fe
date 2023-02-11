@@ -11,7 +11,8 @@ export const getUserDetails = async () => {
   try {
     let response = await fetch(fetchURL, options)
     if (response.ok) {
-      return response
+      let data = await response.json()
+      return data
     }
   } catch (error) {}
 }
