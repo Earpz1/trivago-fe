@@ -80,10 +80,10 @@ export const userLogin = async (email, password) => {
       localStorage.setItem('accessToken', data.accessToken)
       console.log(localStorage.getItem('accessToken'))
       window.location = '/'
+    } else {
+      return response.status
     }
-  } catch (error) {
-    console.log(error)
-  }
+  } catch (error) {}
 }
 
 export const getAccommodationDetails = async (id) => {
