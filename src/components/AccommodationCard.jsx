@@ -16,7 +16,7 @@ const AccommodationCard = ({ details }) => {
       >
         Featured
       </CornerRibbon>
-      <Card.Img variant="top" src={details.image} />
+      <Card.Img variant="top" src={details.image} className="card-image" />
       <Card.Body>
         <Card.Title>{details.name}</Card.Title>
         <Card.Text>{details.description}</Card.Text>

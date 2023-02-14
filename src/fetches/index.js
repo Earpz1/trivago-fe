@@ -1,3 +1,4 @@
+//After loggin in, get user details from the token
 export const getUserDetails = async () => {
   const options = {
     method: 'GET',
@@ -17,6 +18,7 @@ export const getUserDetails = async () => {
   } catch (error) {}
 }
 
+//After logging in, get all the accommodations that the user has listed (Hosts only)
 export const getUserAccommodation = async () => {
   const options = {
     method: 'GET',
@@ -37,6 +39,7 @@ export const getUserAccommodation = async () => {
   } catch (error) {}
 }
 
+//Show all the accommodations
 export const getAccommodations = async () => {
   const options = {
     method: 'GET',
@@ -46,6 +49,25 @@ export const getAccommodations = async () => {
   }
   const fetchURL =
     'https://taboo-quiet-production.up.railway.app/accommodation/'
+
+  try {
+    let response = await fetch(fetchURL, options)
+    if (response.ok) {
+      const data = await response.json()
+      return data
+    }
+  } catch (error) {}
+}
+
+export const getFeaturedAccommodations = async () => {
+  const options = {
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
+    },
+  }
+  const fetchURL =
+    'https://taboo-quiet-production.up.railway.app/accommodation?featured=true'
 
   try {
     let response = await fetch(fetchURL, options)

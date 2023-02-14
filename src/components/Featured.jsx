@@ -1,11 +1,14 @@
 import React from 'react'
 import AccommodationCard from './AccommodationCard'
 import { Col, Container, Row } from 'react-bootstrap'
-import { getAccommodations, getUserAccommodation } from '../fetches'
+import { getFeaturedAccommodations } from '../fetches'
 import { useQuery } from 'react-query'
 
-const Search = () => {
-  const { data, isLoading } = useQuery(['accommodatons'], getAccommodations)
+const Featured = () => {
+  const { data, isLoading } = useQuery(
+    ['featuredAccommodations'],
+    getFeaturedAccommodations,
+  )
 
   return (
     <div className="d-flex justify-content-center">
@@ -25,4 +28,4 @@ const Search = () => {
   )
 }
 
-export default Search
+export default Featured

@@ -1,5 +1,6 @@
 import NavBar from './NavBar'
-import Search from './Search'
+import Featured from './Featured'
+import SearchBar from './SearchBar'
 import { useEffect, useLayoutEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -13,7 +14,8 @@ const Home = () => {
   return (
     <>
       <NavBar />
-      <Search />
+      <SearchBar />
+      <Featured />
     </>
   )
 }

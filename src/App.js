@@ -1,5 +1,6 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'react-datepicker/dist/react-datepicker.css'
 import Home from './components/Home'
 import Login from './components/Login'
 import MyAccommodation from './components/MyAccommodation'
