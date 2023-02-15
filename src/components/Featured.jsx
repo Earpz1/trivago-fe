@@ -12,18 +12,16 @@ const Featured = () => {
 
   return (
     <div className="d-flex justify-content-center">
-      <div className="content-container">
-        <Container>
-          <Row>
-            {!isLoading &&
-              data.map((accomodation) => (
-                <Col key={accomodation._id} xl={4} lg={6} sm={12}>
-                  <AccommodationCard details={accomodation} />
-                </Col>
-              ))}
-          </Row>
-        </Container>
-      </div>
+      <Container className="mt-5">
+        <Row>
+          {!isLoading &&
+            data.map((accomodation) => (
+              <Col key={accomodation._id} xl={3} lg={4} md={6} sm={12}>
+                <AccommodationCard details={accomodation} />
+              </Col>
+            ))}
+        </Row>
+      </Container>
     </div>
   )
 }

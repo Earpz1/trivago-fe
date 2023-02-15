@@ -10,20 +10,25 @@ const MyAccommodation = () => {
   return (
     <>
       <NavBar />
-      <div className="d-flex justify-content-center">
-        <div className="content-container">
-          <Container>
-            <h1>Your Accommodations</h1>
-            <Row>
-              {!isLoading &&
-                data.map((accomodation) => (
-                  <Col key={accomodation._id} md={3} className="mb-3">
-                    <AccommodationCard details={accomodation} />
-                  </Col>
-                ))}
-            </Row>
-          </Container>
-        </div>
+      <div className="d-flex justify-content-center mt-5">
+        <Container>
+          <h1>Your Accommodations</h1>
+          <Row>
+            {!isLoading &&
+              data.map((accomodation) => (
+                <Col
+                  key={accomodation._id}
+                  xl={3}
+                  lg={4}
+                  md={6}
+                  sm={12}
+                  className="mb-3"
+                >
+                  <AccommodationCard details={accomodation} />
+                </Col>
+              ))}
+          </Row>
+        </Container>
       </div>
     </>
   )

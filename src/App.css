@@ -20,7 +20,7 @@ html {
 }
 
 .content-container {
-  background-color: white;
+  background-color: rgba(222, 216, 223, 0.618);
   margin-top: 50px;
   width: 80%;
   height: auto;
@@ -49,7 +49,7 @@ html {
 }
 
 .search-container {
-  width: 80%;
+  width: 100%;
   background-color: white;
   height: auto;
   margin-top: 70px;
@@ -97,4 +97,83 @@ html {
 
 .react-datepicker-popper {
   z-index: 9999 !important;
+}
+
+.featured-accommodation-image {
+  width: 50%;
+  margin: 0px 1px 1px 1px;
+}
+
+.small-accommodation-image {
+  width: 99%;
+  margin: 0px 3px 5px 1px;
+}
+
+.book-now-container {
+  margin-top: 50px;
+  width: 100%;
+  height: 70px;
+  background-color: white;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  font-size: 1.3rem;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.book-now-container a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.price h2 {
+  margin: 0;
+}
+
+.price span {
+  font-size: 0.9rem;
+}
+
+.book-now-button {
+  cursor: pointer;
+  width: auto;
+  height: 50px;
+  background-color: rgb(150, 10, 150);
+  border-radius: 30px;
+  font-size: 1.3rem;
+  padding: 10px 40px 10px 40px;
+  color: white;
+  margin-top: 5px;
+}
+
+.book-now-button:hover {
+  transform: scale(0.9);
+}
+
+.details-container {
+  background-color: white;
+  width: 100%;
+  min-height: 500px;
+  padding: 50px 50px 0px 50px;
+  margin-bottom: 50px;
+}
+
+.details-container h2 {
+  margin-bottom: 0px;
+}
+
+.details-container a {
+  text-decoration: none;
+}
+
+.amenities {
+  font-size: 1.1rem;
+}
+
+.amenities span {
+  margin-right: 10px;
 }
