@@ -8,6 +8,7 @@ import { useQuery } from 'react-query'
 
 const NavBar = () => {
   const navigate = useNavigate()
+  const [loggedIn, setLoggedin] = useState(false)
   const [pageLoaded, setPageLoaded] = useState(false)
   const { data, isLoading } = useQuery(['userDetails'], getUserDetails, {
     refetchOnWindowFocus: false,
@@ -16,6 +17,7 @@ const NavBar = () => {
   useEffect(() => {
     if (!localStorage.getItem('accessToken')) navigate('/login')
     setPageLoaded(true)
+    setLoggedin(true)
   }, [])
 
   const logout = () => {
@@ -36,26 +38,27 @@ const NavBar = () => {
             <span className="logo-text">Strivago</span>
             <span className="logo-text"></span>
           </Navbar.Brand>
-
-          <DropdownButton
-            id="dropdown-basic-button"
-            title={
-              pageLoaded &&
-              !isLoading &&
-              data.name +
-                ' - ' +
-                payload.role.charAt(0).toUpperCase() +
-                payload.role.slice(1)
-            }
-          >
-            {payload.role === 'host' && (
-              <Dropdown.Item href="/myAccommodation">
-                My Accommodations
-              </Dropdown.Item>
-            )}
-            <Dropdown.Item>My Bookings</Dropdown.Item>
-            <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
-          </DropdownButton>
+          {loggedIn && (
+            <DropdownButton
+              id="dropdown-basic-button"
+              title={
+                pageLoaded &&
+                !isLoading &&
+                data.name +
+                  ' - ' +
+                  payload.role.charAt(0).toUpperCase() +
+                  payload.role.slice(1)
+              }
+            >
+              {payload.role === 'host' && (
+                <Dropdown.Item href="/myAccommodation">
+                  My Accommodations
+                </Dropdown.Item>
+              )}
+              <Dropdown.Item>My Bookings</Dropdown.Item>
+              <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
+            </DropdownButton>
+          )}
         </Container>
       </Navbar>
     )
