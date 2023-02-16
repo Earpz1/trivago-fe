@@ -6,7 +6,7 @@ const BookingSuccess = () => {
       <Alert.Heading>
         Your payment has completed and your booking has been confirmed!
       </Alert.Heading>
-      <p>You will shortly recieve an email confirming your booking details!</p>
+      <p>You will shortly receive an email confirming your booking details!</p>
     </Alert>
   )
 }

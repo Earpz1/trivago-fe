@@ -6,6 +6,8 @@ import { searchAccommodations } from '../fetches'
 import SearchResultCard from './SearchResultCard'
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import NoResults from '../components/messages/NoResults.jsx'
+import SearchBar from './SearchBar'
 
 const SearchResults = () => {
   const params = useLocation()
@@ -18,10 +20,18 @@ const SearchResults = () => {
     { refetchOnWindowFocus: false },
   )
 
+  useEffect(() => {
+    setTimeout(() => {
+      console.log(data)
+    }, 2000)
+  }, [])
+
   return (
     <>
       <NavBar />
-      <Container fluid className="w-50 mt-5">
+      {!isLoading && data.length === 0 && <SearchBar />}
+      <Container fluid className="w-75 mt-5">
+        {!isLoading && data.length === 0 && <NoResults />}
         {!isLoading &&
           data.map((result, index) => (
             <SearchResultCard key={index} result={result} />
