@@ -7,16 +7,19 @@ const AccommodationCard = ({ details }) => {
   return (
     <Card className="mb-5 accommodation-card">
       <CornerRibbon
-        position="top-left" // OPTIONAL, default as "top-right"
-        fontColor="#f0f0f0" // OPTIONAL, default as "#f0f0f0"
-        backgroundColor="#FF0000" // OPTIONAL, default as "#2c7"
-        containerStyle={{}} // OPTIONAL, style of the ribbon
-        style={{}} // OPTIONAL, style of ribbon content
-        className="ribbon" // OPTIONAL, css class of ribbon
+        position="top-left"
+        fontColor="#f0f0f0"
+        backgroundColor="#FF0000"
+        containerStyle={{}}
+        style={{}}
+        className="ribbon"
       >
         Featured
       </CornerRibbon>
-      <Link to={`accommodation/${details._id}`} className="card-image-link">
+      <Link
+        to={`accommodation/${details._id}?search?location=${details.city}&dateFrom=2/16/2023&duration=1&guests=1`}
+        className="card-image-link"
+      >
         <Card.Img variant="top" src={details.image} className="card-image" />
         <Card.Body>
           <Card.Title>{details.name}</Card.Title>

@@ -6,11 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
   const navigate = useNavigate()
-  useEffect(() => {
-    if (localStorage.getItem('accessToken') === null) {
-      navigate('/login')
-    }
-  }, [])
+
   return (
     <>
       <NavBar />
