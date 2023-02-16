@@ -10,6 +10,8 @@ const SearchBar = () => {
   const [numberOfGuests, setNumberOfGuests] = useState(1)
   const [location, setLocation] = useState('London')
   const [stayDuration, setStayDuration] = useState(1)
+  const [adults, setAdults] = useState(1)
+  const [children, setChildren] = useState(0)
 
   const changeDate = (date) => {
     setDate(date)
@@ -35,12 +37,28 @@ const SearchBar = () => {
     console.log(numberOfGuests)
   }
 
-  const addGuest = () => {
+  const addAdults = () => {
+    setAdults(adults + 1)
     setNumberOfGuests(numberOfGuests + 1)
   }
 
-  const removeGuest = () => {
-    setNumberOfGuests(numberOfGuests - 1)
+  const addChildren = () => {
+    setChildren(children + 1)
+    setNumberOfGuests(numberOfGuests + 1)
+  }
+
+  const removeChildren = () => {
+    if (children !== 0) {
+      setChildren(children - 1)
+      setNumberOfGuests(numberOfGuests - 1)
+    }
+  }
+
+  const removeAdult = () => {
+    if (adults !== 0) {
+      setAdults(adults - 1)
+      setNumberOfGuests(numberOfGuests - 1)
+    }
   }
 
   return (
@@ -105,7 +123,16 @@ const SearchBar = () => {
               size="md"
               onClick={toggleGuests}
             />
-            {guests && <Guests addGuest={addGuest} removeGuest={removeGuest} />}
+            {guests && (
+              <Guests
+                addAdults={addAdults}
+                removeAdult={removeAdult}
+                addChildren={addChildren}
+                removeChildren={removeChildren}
+                adults={adults}
+                children={children}
+              />
+            )}
           </div>
 
           <div className="d-flex flex-column justify-content-center">

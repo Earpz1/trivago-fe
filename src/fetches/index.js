@@ -7,7 +7,7 @@ export const getUserDetails = async () => {
     },
   }
 
-  const fetchURL = 'https://taboo-quiet-production.up.railway.app/users/me'
+  const fetchURL = 'http://localhost:3001/users/me'
 
   try {
     let response = await fetch(fetchURL, options)
@@ -27,8 +27,7 @@ export const getUserAccommodation = async () => {
     },
   }
 
-  const fetchURL =
-    'https://taboo-quiet-production.up.railway.app/users/me/accommodations'
+  const fetchURL = 'http://localhost:3001/users/me/accommodations'
 
   try {
     let response = await fetch(fetchURL, options)
@@ -98,8 +97,7 @@ export const userLogin = async (email, password) => {
     if (response.ok) {
       const data = await response.json()
       localStorage.setItem('accessToken', data.accessToken)
-      console.log(localStorage.getItem('accessToken'))
-      window.location = '/'
+      return 'success'
     } else {
       return response.status
     }
@@ -144,4 +142,83 @@ export const searchAccommodations = async (location) => {
       return data
     }
   } catch (error) {}
+}
+
+//Create a booking that reserves the requested dates but is not yet confirmed
+export const createBooking = async (bookingInformation) => {
+  const bookingDetails = {
+    hostID: bookingInformation.host._id,
+    accommodationID: bookingInformation.accommodationID,
+    dateFrom: bookingInformation.dateFrom,
+    duration: bookingInformation.duration,
+    guests: bookingInformation.guests,
+    price: '150',
+  }
+
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(bookingDetails),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+
+  const fetchURL = 'http://localhost:3001/bookings'
+  try {
+    let response = await fetch(fetchURL, options)
+
+    if (response.ok) {
+      const data = await response.json()
+      return data._id
+    } else {
+      console.log('Error making booking')
+    }
+  } catch (error) {}
+}
+
+//Return a specific booking by ID
+export const getBooking = async (bookingID) => {
+  const options = {
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
+    },
+  }
+  const fetchURL = `http://localhost:3001/bookings/${bookingID}`
+
+  try {
+    let response = await fetch(fetchURL, options)
+    if (response.ok) {
+      const data = await response.json()
+      return data
+    }
+  } catch (error) {}
+}
+
+//Update the booking when the booking has been confirmed
+export const updateBooking = async (bookingID) => {
+  const bookingDetails = {
+    guestID: '63e63c4aab4ae4d46b323925',
+    confirmed: true,
+  }
+
+  const options = {
+    method: 'PUT',
+    body: JSON.stringify(bookingDetails),
+
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
+    },
+  }
+  const fetchURL = `http://localhost:3001/bookings/${bookingID}`
+
+  try {
+    let response = await fetch(fetchURL, options)
+    if (response.ok) {
+      const data = await response.json()
+    }
+  } catch (error) {
+    console.log(error)
+  }
 }

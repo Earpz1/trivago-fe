@@ -1,23 +1,24 @@
 import { Form, Button, Navbar, Container } from 'react-bootstrap'
 import { userLogin } from '../fetches'
-import LoginError from '../components/errors/LoginError.jsx'
-import { useNavigate } from 'react-router-dom'
+import LoginError from '../components/messages/LoginError.jsx'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { BiBed } from 'react-icons/bi'
 import { useState } from 'react'
 
 const Login = () => {
-  const [email, setEmail] = useState(null)
-  const [password, setPassword] = useState(null)
+  const params = useLocation()
+  const searchParams = new URLSearchParams(params.search)
+  const redirectLocation = searchParams.get('redirect')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [error, setError] = useState(false)
 
   const changePassword = (event) => {
     setPassword(event.target.value)
-    console.log(password)
   }
 
   const changeEmail = (event) => {
     setEmail(event.target.value)
-    console.log(email)
   }
 
   const navigate = useNavigate()
@@ -28,6 +29,12 @@ const Login = () => {
     const login = await userLogin(email, password)
     if (login === 401) {
       setError(true)
+    }
+
+    if (login === 'success' && redirectLocation !== null) {
+      navigate(`/${redirectLocation}`)
+    } else {
+      navigate('/')
     }
   }
   return (

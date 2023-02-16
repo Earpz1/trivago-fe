@@ -1,12 +1,37 @@
 import { IoMdArrowBack } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
+import { createBooking } from '../fetches'
 
-const QuoteBanner = () => {
+const QuoteBanner = ({ booking }) => {
   const navigate = useNavigate()
+  let params = useParams()
+
+  const location = useLocation()
+  const searchParams = new URLSearchParams(location.search)
+  const duration = searchParams.get('duration')
+  const dateString = searchParams.get('dateFrom')
+  const arrivingDate = new Date(dateString)
+  const guests = searchParams.get('guests')
+  const accommodationID = params.id
 
   const goBack = () => {
     navigate(-1)
+  }
+
+  booking.duration = duration
+  booking.dateFrom = dateString
+  booking.guests = guests
+  booking.accommodationID = accommodationID
+
+  const reserveBooking = async () => {
+    const bookingID = await createBooking(booking)
+    if (localStorage.getItem('accessToken')) {
+      console.log(bookingID)
+      navigate(`/confirm?bookingID=${bookingID}`)
+    } else {
+      navigate(`/login?redirect=confirm?bookingID=${bookingID}`)
+    }
   }
 
   return (
@@ -22,9 +47,10 @@ const QuoteBanner = () => {
           <h2>£150</h2>
           <span>Per night</span>
         </div>
-        <Link to="/confirm">
-          <div className="book-now-button">Book Now</div>
-        </Link>
+
+        <div className="book-now-button" onClick={reserveBooking}>
+          Book Now
+        </div>
       </div>
     </div>
   )

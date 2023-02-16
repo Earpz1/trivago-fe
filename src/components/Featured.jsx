@@ -12,9 +12,7 @@ const Featured = () => {
 
   return (
     <div className="d-flex justify-content-center">
-
-      <Container className="mt-5">
-
+      <Container fluid className="mt-5 w-75">
         <Row>
           {!isLoading &&
             data.map((accomodation) => (

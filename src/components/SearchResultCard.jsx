@@ -12,13 +12,13 @@ const SearchResultCard = ({ result }) => {
   const duration = searchParams.get('duration')
   const dateString = searchParams.get('dateFrom')
   const arrivingDate = new Date(dateString)
-
-  useEffect(() => {
-    console.log(arrivingDate)
-  }, [])
+  const guests = searchParams.get('guests')
 
   return (
-    <Link to={`../accommodation/${result._id}`} className="card-image-link">
+    <Link
+      to={`../accommodation/${result._id}?dateFrom=${dateString}&guests=${guests}&duration=${duration}`}
+      className="card-image-link"
+    >
       <div className="search-result-container mb-5 d-flex">
         <img src={result.image} alt={result.name} />
         <div className="d-flex flex-column justify-content-between">
@@ -33,7 +33,9 @@ const SearchResultCard = ({ result }) => {
               initialValue={result.rating}
               className="mb-1 mt-4"
             />
-            <span className="mt-4">620 reviews</span>
+            <span>
+              620 reviews <small>(view all)</small>
+            </span>
           </div>
 
           <div className="d-flex flex-column">

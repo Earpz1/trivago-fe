@@ -205,3 +205,35 @@ html {
   width: 350px;
   margin-right: 20px;
 }
+
+.order-container {
+  width: 30%;
+  height: 400px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.payment-container {
+  width: 68%;
+  height: 400px;
+  background-color: white;
+  border-radius: 10px;
+  padding-left: 50px;
+}
+
+.payment-icon {
+  font-size: 10rem;
+  color: rgb(103, 138, 236);
+}
+
+.order-details-image {
+  width: 90%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.booking-confirmed {
+  font-size: 15rem;
+  margin-top: 50px;
+  color: green;
+}
