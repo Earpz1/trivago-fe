@@ -2,14 +2,18 @@ import { Container, Form } from 'react-bootstrap'
 import ReactDatePicker from 'react-datepicker'
 import { useState } from 'react'
 import Guests from './Guests'
+import { Link } from 'react-router-dom'
 
 const SearchBar = () => {
-  const [date, setDate] = useState(new Date('02-13-2023'))
+  const [date, setDate] = useState(new Date())
   const [guests, setShowGuests] = useState(false)
-  const [numberOfGuests, setNumberOfGuests] = useState(0)
+  const [numberOfGuests, setNumberOfGuests] = useState(1)
+  const [location, setLocation] = useState('London')
+  const [stayDuration, setStayDuration] = useState(1)
 
   const changeDate = (date) => {
     setDate(date)
+    console.log(date)
   }
 
   const toggleGuests = () => {
@@ -18,6 +22,17 @@ const SearchBar = () => {
     } else {
       setShowGuests(false)
     }
+  }
+
+  const handleLocation = (event) => {
+    setLocation(event.target.value)
+    console.log(location)
+  }
+
+  const handleDuration = (event) => {
+    setStayDuration(event.target.value)
+    console.log(stayDuration)
+    console.log(numberOfGuests)
   }
 
   const addGuest = () => {
@@ -29,7 +44,7 @@ const SearchBar = () => {
   }
 
   return (
-    <Container>
+    <Container fluid className="w-75">
       <div className="d-flex justify-content-center">
         <div className="search-container px-3 py-3 d-flex flex-lg-row flex-sm-column justify-content-between px-5">
           <div className="d-flex flex-column">
@@ -37,7 +52,14 @@ const SearchBar = () => {
               <strong>Where do you want to stay?</strong>
             </Form.Label>
 
-            <Form.Control type="text" placeholder="Location" size="md" />
+            <Form.Control
+              type="text"
+              value={location}
+              size="md"
+              onChange={(event) => {
+                handleLocation(event)
+              }}
+            />
           </div>
           <div className="d-flex flex-column">
             <Form.Label>
@@ -59,14 +81,18 @@ const SearchBar = () => {
             <Form.Label>
               <strong>How many nights?</strong>
             </Form.Label>
-            <Form.Select>
+            <Form.Select
+              onChange={(event) => {
+                handleDuration(event)
+              }}
+            >
               <option value="1">1 night</option>
               <option value="2">2 nights</option>
               <option value="3">3 nights</option>
               <option value="4">4 Nights</option>
               <option value="5">5 Nights</option>
               <option value="6">6 Nights</option>
-              <option value="7">6 Nights</option>
+              <option value="7">7 Nights</option>
             </Form.Select>
           </div>
           <div className="d-flex flex-column">
@@ -83,9 +109,15 @@ const SearchBar = () => {
           </div>
 
           <div className="d-flex flex-column justify-content-center">
-            <div className="search-button d-flex justify-content-center align-items-center">
-              Search!
-            </div>
+            <Link
+              to={`/search?location=${location}&dateFrom=${date.toLocaleDateString(
+                'en-US',
+              )}&duration=${stayDuration}&guests=${numberOfGuests}`}
+            >
+              <div className="search-button d-flex justify-content-center align-items-center">
+                Search!
+              </div>
+            </Link>
           </div>
         </div>
       </div>

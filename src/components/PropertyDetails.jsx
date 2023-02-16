@@ -22,7 +22,7 @@ const PropertyDetails = () => {
 
       {!isLoading && (
         <Container>
-          <QuoteBanner />
+          <QuoteBanner booking={data} />
           <div className="image-container d-flex">
             <img
               src="https://images.trvl-media.com/lodging/1000000/30000/22800/22702/79f48afd.jpg?impolicy=resizecrop&rw=1200&ra=fit"
@@ -52,7 +52,7 @@ const PropertyDetails = () => {
             </div>
           </div>
           <div className="mt-5">
-            <PropertyTabs />
+            <PropertyTabs booking={data} />
           </div>
         </Container>
       )}

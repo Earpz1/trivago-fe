@@ -5,7 +5,7 @@ import CornerRibbon from 'react-corner-ribbon'
 
 const AccommodationCard = ({ details }) => {
   return (
-    <Card className="mb-5">
+    <Card className="mb-5 accommodation-card">
       <CornerRibbon
         position="top-left" // OPTIONAL, default as "top-right"
         fontColor="#f0f0f0" // OPTIONAL, default as "#f0f0f0"
@@ -16,24 +16,22 @@ const AccommodationCard = ({ details }) => {
       >
         Featured
       </CornerRibbon>
-      <Card.Img variant="top" src={details.image} className="card-image" />
-      <Card.Body>
-        <Card.Title>{details.name}</Card.Title>
-        <Card.Text>{details.description}</Card.Text>
-      </Card.Body>
-      <ListGroup className="list-group-flush">
-        <ListGroup.Item>Location: {details.city}</ListGroup.Item>
-        <ListGroup.Item>Max Guests: {details.maxGuests}</ListGroup.Item>
-        <ListGroup.Item>
-          Rating:{' '}
-          <Rating size={25} readonly={true} initialValue={details.rating} />{' '}
-        </ListGroup.Item>
-      </ListGroup>
-      <Card.Body>
-        <Link to={`accommodation/${details._id}`}>
-          <Button>More Details...</Button>
-        </Link>
-      </Card.Body>
+      <Link to={`accommodation/${details._id}`} className="card-image-link">
+        <Card.Img variant="top" src={details.image} className="card-image" />
+        <Card.Body>
+          <Card.Title>{details.name}</Card.Title>
+          <Card.Text>{details.description}</Card.Text>
+        </Card.Body>
+        <ListGroup className="list-group-flush">
+          <ListGroup.Item>Location: {details.city}</ListGroup.Item>
+
+          <ListGroup.Item className="d-flex justify-content-between">
+            <Rating size={25} readonly={true} initialValue={details.rating} />
+            {' 1,032 Reviews '}
+            <strong>£150 per night</strong>
+          </ListGroup.Item>
+        </ListGroup>
+      </Link>
     </Card>
   )
 }

@@ -5,17 +5,20 @@ import { HiWifi } from 'react-icons/hi'
 import { TbSmokingNo } from 'react-icons/tb'
 import { FaSnowflake } from 'react-icons/fa'
 import { FaHotel } from 'react-icons/fa'
+import { useQuery } from 'react-query'
+import { useParams } from 'react-router-dom'
+import { getAccommodationDetails } from '../fetches'
 
-function PropertyTabs() {
+function PropertyTabs({ booking }) {
+  let params = useParams()
+
   return (
     <Tabs defaultActiveKey="overview" id="fill-tab-example" className="mt-3">
       <Tab eventKey="overview" title="Overview">
         <div className="details-container">
-          <h2>Studio Apartment</h2>
-          <Rating size={20} readonly={true} initialValue={4} />
-          <p className="mt-2">
-            3 Bedroom studio apartment in the center of London
-          </p>
+          <h2>{booking.name}</h2>
+          <Rating size={20} readonly={true} initialValue={booking.rating} />
+          <p className="mt-2">{booking.description}</p>
           <h4>Latest Review</h4>
           <span>
             Great location and good value for money. We would stay here again.

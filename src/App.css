@@ -48,6 +48,20 @@ html {
   height: 250px;
 }
 
+.accommodation-card:hover {
+  transform: scale(1.1);
+}
+
+.card-image-link {
+  text-decoration: none;
+  color: black;
+}
+
+.card-image-link:hover {
+  text-decoration: none;
+  color: black;
+}
+
 .search-container {
   width: 100%;
   background-color: white;
@@ -176,4 +190,18 @@ html {
 
 .amenities span {
   margin-right: 10px;
+}
+
+.search-result-container {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.search-result-container:hover {
+  transform: scale(1.03);
+}
+
+.search-result-container img {
+  width: 350px;
+  margin-right: 20px;
 }
