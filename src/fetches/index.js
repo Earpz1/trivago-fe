@@ -7,7 +7,7 @@ export const getUserDetails = async () => {
     },
   }
 
-  const fetchURL = 'http://localhost:3001/users/me'
+  const fetchURL = 'https://taboo-quiet-production.up.railway.app/users/me'
 
   try {
     let response = await fetch(fetchURL, options)
@@ -27,7 +27,8 @@ export const getUserAccommodation = async () => {
     },
   }
 
-  const fetchURL = 'http://localhost:3001/users/me/accommodations'
+  const fetchURL =
+    'https://taboo-quiet-production.up.railway.app/users/me/accommodations'
 
   try {
     let response = await fetch(fetchURL, options)
@@ -46,7 +47,8 @@ export const getAccommodations = async () => {
       Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
     },
   }
-  const fetchURL = 'http://localhost:3001/accommodation/'
+  const fetchURL =
+    'https://taboo-quiet-production.up.railway.app/accommodation/'
 
   try {
     let response = await fetch(fetchURL, options)
@@ -64,7 +66,8 @@ export const getFeaturedAccommodations = async () => {
       Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
     },
   }
-  const fetchURL = 'http://localhost:3001/accommodation?featured=true'
+  const fetchURL =
+    'https://taboo-quiet-production.up.railway.app/accommodation?featured=true'
 
   try {
     let response = await fetch(fetchURL, options)
@@ -89,7 +92,7 @@ export const userLogin = async (email, password) => {
     },
   }
 
-  const fetchURL = 'http://localhost:3001/users/login'
+  const fetchURL = 'https://taboo-quiet-production.up.railway.app/users/login'
 
   try {
     let response = await fetch(fetchURL, options)
@@ -111,7 +114,7 @@ export const getAccommodationDetails = async (id) => {
       Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
     },
   }
-  const fetchURL = `http://localhost:3001/accommodation/${id}`
+  const fetchURL = `https://taboo-quiet-production.up.railway.app/accommodation/${id}`
 
   try {
     let response = await fetch(fetchURL, options)
@@ -133,7 +136,7 @@ export const searchAccommodations = async (location) => {
       Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
     },
   }
-  const fetchURL = `http://localhost:3001/accommodation?location=${location}`
+  const fetchURL = `https://taboo-quiet-production.up.railway.app/accommodation?location=${location}`
 
   try {
     let response = await fetch(fetchURL, options)
@@ -163,7 +166,7 @@ export const createBooking = async (bookingInformation) => {
     },
   }
 
-  const fetchURL = 'http://localhost:3001/bookings'
+  const fetchURL = 'https://taboo-quiet-production.up.railway.app/bookings'
   try {
     let response = await fetch(fetchURL, options)
 
@@ -184,7 +187,7 @@ export const getBooking = async (bookingID) => {
       Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
     },
   }
-  const fetchURL = `http://localhost:3001/bookings/${bookingID}`
+  const fetchURL = `https://taboo-quiet-production.up.railway.app/bookings/${bookingID}`
 
   try {
     let response = await fetch(fetchURL, options)
@@ -211,7 +214,7 @@ export const updateBooking = async (bookingID) => {
       Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
     },
   }
-  const fetchURL = `http://localhost:3001/bookings/${bookingID}`
+  const fetchURL = `https://taboo-quiet-production.up.railway.app/bookings/${bookingID}`
 
   try {
     let response = await fetch(fetchURL, options)
